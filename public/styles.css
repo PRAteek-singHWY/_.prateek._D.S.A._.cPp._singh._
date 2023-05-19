@@ -7,6 +7,7 @@ html {
   font-family: "Montserrat", sans-serif;
 }
 body {
+
   background-color: #4941d7;
 background-image: url("https://www.transparenttextures.com/patterns/brick-wall.png");
 
@@ -15,11 +16,12 @@ background-image: url("https://www.transparenttextures.com/patterns/brick-wall.p
 
 
 header {
-  position: fixed;
   top: 18px;
   left: 18px;
   width: 175px;
-  height: 170px;
+  margin-top: 27px;
+  margin-left: 40px;
+  height: 168px;
   background-color: #5430d3;
   border-radius: 50%;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
@@ -42,15 +44,20 @@ header h1 {
 
 
 footer {
-  position: absolute;
+  position: fixed;
   text-align: center;
   bottom: 0;
   width: 100%;
-  height: 2.5rem;
+  height: 50px;
+
+
 }
 
 footer p {
-  color: #ccc;
+  margin-bottom: -3px;
+
+  color: #f8f7fb;
+
 }
 .note {
   background: #fff;
@@ -60,6 +67,10 @@ footer p {
   width: 240px;
   margin: 16px;
   float: left;
+  
+  /* Add a maximum height to limit the note height */
+  max-height: 200px;
+  overflow: auto; /* Enable scrollbars if content exceeds the maximum height */
 }
 .note h1 {
   font-size: 1.1em;
