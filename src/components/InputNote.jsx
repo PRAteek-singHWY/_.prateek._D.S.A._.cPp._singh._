@@ -20,8 +20,15 @@ const CreateArea = (props) => {
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
+    //onClickhandle to addNote 
     props.onClickHandle(title_Note.title, title_Note.content);
+
+    //to clear the entry once the note's saved
+    set_Title_Note(({
+      title: "",
+      content:""
+    }))
+    event.preventDefault();
   };
 
   const Expanding = () => {
