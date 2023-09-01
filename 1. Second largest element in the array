@@ -1,0 +1,42 @@
+#include <bits/stdc++.h> 
+
+// TC -> O(N) SC -> O(N)
+// int findSecondLargest(int n, vector<int> &arr)
+// {
+//     map<int,int>Counter;
+//     for(int i=0;i<n;i++){
+//         Counter[arr[i]]++;
+//     }
+//     arr.clear();
+//     for(auto i:Counter){
+//         if(i.second==n){
+//             return -1;
+//         }
+//         else{
+//             arr.push_back(i.first);
+//         }
+//     }
+//     return arr[arr.size()-2];
+    
+//     // Write your code here.
+// }
+
+
+// TC -> O(N) SC -> O(N)
+int findSecondLargest(int n, vector<int> &arr)
+{
+
+    bool found = false;
+    int maxi = *max_element(arr.begin(),arr.end());
+    int second_maxi = INT32_MIN;
+    for(int i=0;i<n;i++){
+        if(arr[i]>second_maxi && arr[i]<maxi){
+            second_maxi = arr[i];
+            found = true;
+        }
+    }
+     if(!found){
+            return -1;
+        }
+    return second_maxi;
+}
