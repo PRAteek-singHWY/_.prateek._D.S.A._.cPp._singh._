@@ -1,0 +1,42 @@
+#include <bits/stdc++.h> 
+// TC -> O(Log*N) SC -> O(1)
+int firstMissing(int v1[], int n)
+{
+
+//sort the array
+sort(v1,v1+n);
+
+//Thre reason why we did this founding for one is beacuse now in next 
+//loop we are going to search and check if arr[i]+1 = arr[i+1] or not and if 1 was present we can do  
+//this checking but if 1 was not present then we simply know that the minimum number missing is 1 itself
+
+bool found = 0;
+for(int i=0;i<n;i++){
+//only checking positive numbers(numbers greater than 0)
+    if(v1[i]>0){
+        if(v1[i]==1){
+            found = 1;
+            break;
+        }
+    }
+}
+
+// if 1 is missing
+if(!found){
+    return 1;
+}
+
+//if 1 was there now we can check which consecutive elemnt is no there and return it
+int i=0;
+while(i<n){
+    //just look for the  positive numbers and search for minimum  missing positive number
+    if(v1[i]>0){
+        if( v1[i+1] != v1[i]+1 ){
+            return v1[i]+1;
+        }
+    }
+    i++;
+}
+//if all numbers were present in consecutive order then return the next element after the last element 
+return v1[n-1]+1;
+}
