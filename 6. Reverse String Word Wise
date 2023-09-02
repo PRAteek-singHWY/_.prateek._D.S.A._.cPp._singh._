@@ -1,0 +1,92 @@
+
+// USING VECTOR 
+// TC ->O(N+m) SC -> O(N) m->number of words in sentence which we reversed
+// #include <bits/stdc++.h>
+// using namespace std;
+
+// string reverseStringWordWise(string input)
+// {
+//     vector<string>REVERSIFY_STRING;
+//     string ans  = "";
+//     string temp = "";
+//     int n = input.length();
+//     int i=0;
+//     while(i<n){
+    
+//     if(input[i]==' '){
+//         REVERSIFY_STRING.push_back(temp);
+//         temp = "";
+//     }
+//     else{
+//      temp.push_back(input[i]);
+//     }
+//    i++;
+//    if(i==n){
+//        REVERSIFY_STRING.push_back(temp);
+//    }
+//     }
+//     reverse( REVERSIFY_STRING.begin(),REVERSIFY_STRING.end() );
+//     for(auto i:REVERSIFY_STRING){
+//         ans.append(i);
+//         ans.push_back(' ');
+//     }
+//     return ans;
+//     //Write your code here
+// }
+
+// int main()
+// {
+//     string s;
+//     getline(cin, s);
+//     string ans = reverseStringWordWise(s);
+//     cout << ans << endl;
+// }
+
+
+
+
+
+// USING STACK
+// TC ->O(N) SC -> O(N)
+#include <bits/stdc++.h>
+using namespace std;
+string reverseStringWordWise(string input)
+{
+    stack<string>REVERSIFIED_STRING;
+    string ans  = "";
+    string temp = "";
+    int n = input.length();
+    int i=0;
+    while(i<n){
+        if(input[i]!=' '){
+        temp.push_back(input[i]);
+        }
+        else{
+            //push the word inside the stack
+            REVERSIFIED_STRING.push(temp);
+            temp = "";
+        }
+        i++;
+        //pushing the last word because after last we don't have nay space so
+        //this is the only way to push in the last word                                
+        if(i==n){
+            REVERSIFIED_STRING.push(temp);
+        }
+    }
+    
+    //now creating reversed string by appending each word to the ans string
+    while(!REVERSIFIED_STRING.empty()){
+        ans.append(REVERSIFIED_STRING.top());
+        ans.push_back(' ');
+        REVERSIFIED_STRING.pop();
+    }
+    return ans;
+}
+
+int main()
+{
+    string s;
+    getline(cin, s);
+    string ans = reverseStringWordWise(s);
+    cout << ans << endl;
+}
