@@ -1,0 +1,32 @@
+#include <bits/stdc++.h> 
+// TC -> O(N) SC -> O(1)
+int minimumParentheses(string pattern) {
+    // Write your code here.
+    // pattern is the given string.
+    int required      = 0;
+    int open_count    = 0;
+    int closed_count  = 0;
+    for(int i=0;i<pattern.length();i++){
+        //if we find a closed bracket before any open bracket it means that 
+        // we require an external open bracket and hence we increase (require) and decrease the (closed_count)
+    if(pattern[i] ==  ')'){
+        closed_count++;
+        if(open_count>=closed_count){
+            open_count--;
+            closed_count--;
+        }
+        else{
+            closed_count--;
+            required++;
+        }
+    }
+    //if we ever find an open bracket first then we know that their need can be fulfilled
+    // by the closed bracket which come further and if they don't come we simply add that requirement to 
+    //the (required) i.e we do ( required = required + open_count )
+    else{
+            open_count++;
+    }
+}
+    required = ( required + open_count );
+    return required;
+}
