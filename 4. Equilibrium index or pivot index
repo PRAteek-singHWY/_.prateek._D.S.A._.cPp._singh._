@@ -1,0 +1,35 @@
+#include <bits/stdc++.h> 
+// TC -> O(N) SC -> O(N)
+
+//HERE WE SIMPLY COMPARE THE LEFT_SUM and RIGHT_SUM until they are equal
+int findEquilibriumIndex(vector<int> &arr) {
+
+    // Pivot index from Leetcode same as this one
+    int n = arr.size();
+    if(n==1){
+        return -1;
+    }
+
+    //initialising Right sum 
+    int R_SUM = 0;
+    for(int i=0;i<n;i++){
+        R_SUM+=arr[i];
+    }
+
+    // initialising left sum
+    int L_SUM = 0;
+
+    for(int i=0;i<n;i++){
+        // to check i-th position for equilibrium we just 
+        // remove the value at that i-th value from our RIGHT_SUM
+        //and then compare R_SUM with L_SUM
+    R_SUM-=arr[i];
+    if( L_SUM == R_SUM ){
+        return i;
+    }
+    L_SUM+=arr[i];
+    }
+
+return -1;
+    // Write your code here.
+}
