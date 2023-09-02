@@ -1,6 +1,6 @@
 #include <bits/stdc++.h> 
 
-// TC -> O(N) SC -> O(N)
+// TC -> O(N) SC -> O(1)
 // int findSecondLargest(int n, vector<int> &arr)
 // {
 //     map<int,int>Counter;
