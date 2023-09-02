@@ -1,0 +1,25 @@
+#include <bits/stdc++.h> 
+// TC -> O(N) SC -> O(N)
+string encode(string &message)
+{
+    string ans  =  "";
+    char temp ;
+    int char_counter = 1;
+    for(int i=0;i<message.length();i++){
+        //assigning the current char to the temp
+        temp = message[i];
+        if(message[i]==message[i+1]){
+            char_counter++;
+        }
+        else if( message[i]!=message[i+1] || message[i]==message[i+1] ){
+            ans.push_back(temp);
+            //converting counter to string and then appending it to string ans 
+            string count_to_str = to_string(char_counter);
+            ans.append(count_to_str);
+            char_counter = 1;
+        }
+       
+    }
+    return ans;
+    //   Write your code here.
+}
