@@ -1,0 +1,35 @@
+// TC -> O(N) SC -> O(1)
+// checker
+int count_checker(string str){
+	int n = str.length();
+	int moves_count = 0;
+	for(int i=0;i<n-1;i++){
+		if(str[i]==str[i+1]){
+			if(str[i]=='1'){
+				str[i+1] = '0';
+			}
+			else{
+				str[i+1] = '1';
+			}
+			moves_count++;
+		}
+	}
+		return moves_count;
+}
+
+int makeBeautiful(string str) {
+	int count1 = count_checker(str);
+	// cout<<"before --> "<<str<<endl;;
+	if(str[0]=='1'){
+		str[0] = '0';
+	}
+	else{
+		str[0] = '1';
+	}
+	// cout<<"after   --> "<<str<<endl;;
+
+    //intialising count 2 as one because we are already making one move by changing str[0] 
+	// equal to opposite of it's initial value. so, one move has been made
+	int count2 =1+ count_checker(str); 
+	return min(count1,count2);
+}
