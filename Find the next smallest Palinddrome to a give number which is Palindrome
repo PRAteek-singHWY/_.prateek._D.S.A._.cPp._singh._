@@ -1,0 +1,136 @@
+#include <bits/stdc++.h> 
+//TC ->O(N) SC -> O(1)
+string nextLargestPalindrome(string str, int length){
+	// Write your code here.
+	// stoi(str) string to int
+	// str = std::to_string(number) int to str
+	int n = length;
+	int c = 0;
+	for(int i=0;i<n;i++){
+		if(str[i]=='9'){
+			c++;
+		}
+	}
+	if(c==n){
+		int number = stoi(str);
+		number += 2;
+
+		return to_string(number);
+	}
+
+
+	int s = 0;
+	int e = n-1;
+	int mid ;
+	int temp1;
+	int temp2;
+	char char_temp1;
+	char char_temp2;
+	string str1;
+	string str2;
+
+
+    //even length string
+	if(n%2==0){
+			mid = s + (e-s)/2;
+			if(str[mid]!='9'){
+
+				//converting char to int value
+				temp1 = str[mid] - '0';
+				temp1+=1;
+				//converting int to char value
+                char_temp1 =  temp1 + '0';
+				str[mid] = char_temp1;
+
+
+				//converting char to int value
+				temp2 = str[mid+1] - '0';
+				temp2+=1;
+				//converting int to char value
+                char_temp2 =  temp2 + '0';
+				str[mid+1] = char_temp2;
+
+
+			}
+			else{
+
+				//part-1 from [0] to [mid]
+				for(int i=0;i<=mid;i++){
+					str1.push_back(str[i]);
+				}
+				//convert string to int
+				temp1 = stoi(str1);
+				//add1
+				temp1+=1;
+				//convert int to string
+				str1 = to_string(temp1);
+
+
+				//part-2 from [mid+!] to [n-1]
+				for(int i=mid+1;i<n;i++){
+					str2.push_back(str[i]);
+				}
+				//reverse
+				reverse(str2.begin(),str2.end());
+				//convert string to int
+				temp2 = stoi(str2);
+				//add 1
+				temp2+=1;
+				//convert int to string
+				str2 = to_string(temp2);
+				//again reverse
+				reverse(str2.begin(),str2.end());
+				str.clear();
+				str.append(str1);
+				str.append(str2);
+			}
+
+	}
+
+	//odd length string
+	else{
+			mid = s + (e-s)/2;
+			if(str[mid]!='9'){
+				temp1 = str[mid] - '0';
+				temp1+=1;
+                char_temp1 =  temp1 + '0';
+				str[mid] = char_temp1;
+			}
+			else{
+
+				//part-1 from [0] to [mid]
+				for(int i=0;i<=mid;i++){
+					str1.push_back(str[i]);
+				}
+				//convert string to int
+				temp1 = stoi(str1);
+				//add1
+				temp1+=1;
+				//convert int to string
+				str1 = to_string(temp1);
+
+
+				//part-2 from [mid+!] to [n-1]
+				for(int i=mid+1;i<n;i++){
+					str2.push_back(str[i]);
+				}
+				//reverse
+				reverse(str2.begin(),str2.end());
+				//convert string to int
+				temp2 = stoi(str2);
+				//add 1
+				temp2+=1;
+				//convert int to string
+				str2 = to_string(temp2);
+				//again reverse
+				reverse(str2.begin(),str2.end());
+				str.clear();
+				str.append(str1);
+				str.append(str2);
+
+			}
+
+	}
+	return str;
+
+}
