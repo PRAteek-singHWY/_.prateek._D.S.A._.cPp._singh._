@@ -1,0 +1,9 @@
+#include <bits/stdc++.h> 
+int minElementsToRemove(vector<int> &arr)
+{
+	set<int> SeT;
+	for(auto i:arr){
+			SeT.insert(i);
+	}
+	return arr.size() - SeT.size();
+}
