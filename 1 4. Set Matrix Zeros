@@ -1,0 +1,50 @@
+#include <bits/stdc++.h>
+// TC -> O(M*N) SC -> O(N+M)
+void modifier(int rows, int cols,vector<pair<int,int>>&Vp , vector<vector<int>> &matrix){
+
+for(auto i:Vp){
+	int ri = i.first;
+	int ci = i.second;
+
+// upper portion
+for(int i=0;i<ri;i++){
+	matrix[i][ci] = 0 ;
+}
+
+//lower portion
+for(int i=ri;i<rows;i++){
+	matrix[i][ci] = 0 ;
+}
+
+// left portion
+for(int i=0;i<ci;i++){
+	matrix[ri][i] = 0 ;
+}
+
+// right portion
+for(int i=ci;i<cols;i++){
+	matrix[ri][i] = 0 ;
+}
+
+	}
+}
+
+
+void setZeros(vector<vector<int>> &matrix)
+{
+	int rows = matrix.size();
+	int cols = matrix[0].size();
+	//pairs of ( row_index ) and ( col_index ) will be stored in vector Vp
+	vector<pair<int,int>>Vp;
+	for(int i=0;i<rows;i++){
+		for(int j=0;j<cols;j++){
+			if(matrix[i][j]==0){
+				Vp.push_back(make_pair(i,j));
+			}
+		}
+	}
+	modifier(rows,cols,Vp,matrix);
+	// for(auto i:Vp){
+	// 	cout<<"Pairs --> "<<i.first<<"-"<<i.second<<".  "<<endl; ;
+	// }
+}
